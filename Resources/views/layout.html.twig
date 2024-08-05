@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            {% stylesheets 
+                'bootstrap/css/bootstrap.min.css'
+                'bootstrap/css/bootstrap-theme.min.css'
+                'css/jquery.datetimepicker.css'
+                'jqueryui/jquery-ui.css'
+                'css/toastr.min.css'
+                'css/main.css' 
+                filter='cssrewrite' output='css/compiled/main.css' %}
+                <link rel="stylesheet" href="{{ asset_url }}?v=0.0.1"></script>
+            {% endstylesheets %}
+        {% endblock %} 
+        <title>{% block titleTab %}AS Hole Championship{% endblock %}</title>
+    </head>
+    <body>
+        {% trans_default_domain 'AppBundle' %}
+        <div class="container">
+            <h1>{% block title %}AS Hole Championship{% endblock %}</h1>
+            
+            {% block menu %}         
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="{{ path('ash_homepage') }}"><span class="navbar-brand"><i class="glyphicon glyphicon-home"></i> Accueil</span></a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li {% block activeMatchs %}{% endblock %}><a href="{{ path('ash_matchs') }}">Matchs</a></li>
+                            <li {% block activeCalendrier %}{% endblock %}><a href="{{ path('ash_calendrier') }}">Calendrier</a></li>
+                            <li {% block activeEquipes %}{% endblock %}><a href="{{ path('ash_equipes') }}">Equipes</a></li>
+                            <li {% block activeClassement %}{% endblock %}><a href="{{ path('ash_classement') }}">Classement</a></li>
+                        </ul>
+                        {% if app.user %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path("fos_user_security_logout") }}"><i class="material-icons" style="vertical-align: middle; margin-top: -5px;">exit_to_app</i> Déconnexion</a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+            {% endblock %}
+            {% block breadcrumb %}{% endblock %}
+           
+            {% block flashMessages %}
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="alert {{ 'alert-' ~ type }}">
+                            {{ message|trans() }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+            
+            {% block content %}{% endblock %}
+        </div>
+        
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            {% javascripts 
+                'jqueryui/jquery-ui.js'
+                'js/lib/jquery.datetimepicker.full.js'
+                'bootstrap/js/bootstrap.min.js'
+                'js/lib/bootstrap-validator.js'
+                'js/lib/toastr.min.js'
+                'js/main.js' output='js/compiled/main.js' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        {% block pageScript %}{% endblock %}
+    </body>
+</html>

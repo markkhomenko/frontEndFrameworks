@@ -1,0 +1,11 @@
+{% if menu is defined %}
+<ol class="breadcrumb">
+{% for m in menu %}
+    {% if m.lien == '' %}
+        <li>{{ m.lien_nom }}</li>
+    {% else %}
+        <li><a href="{{ m.lien }}">{{ m.lien_nom }}</a></li>
+    {% endif %}
+{% endfor %}
+</ol>
+{% endif %}

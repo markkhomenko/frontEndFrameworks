@@ -1,0 +1,19 @@
+ash_homepage:
+    path:     /
+    defaults: { _controller: ASHAppBundle:Accueil:index }
+
+ash_matchs:
+    path:     /matchs
+    defaults: { _controller: ASHAppBundle:Matchs:index }
+
+ash_calendrier:
+    path:     /calendrier
+    defaults: { _controller: ASHAppBundle:Calendrier:index }
+
+ash_equipes:
+    path:     /equipes
+    defaults: { _controller: ASHAppBundle:Equipes:index }
+
+ash_classement:
+    path:     /classement
+    defaults: { _controller: ASHAppBundle:Classement:index }

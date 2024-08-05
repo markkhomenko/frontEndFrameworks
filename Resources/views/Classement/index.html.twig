@@ -1,0 +1,17 @@
+{% extends "ASHAppBundle::layout.html.twig" %}
+
+{% block titleTab %}
+    Classement - {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Classement
+{% endblock %}
+
+{% block activeClassement %}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    Classement !
+{% endblock %}

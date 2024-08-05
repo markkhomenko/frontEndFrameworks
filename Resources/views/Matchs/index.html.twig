@@ -1,0 +1,17 @@
+{% extends "ASHAppBundle::layout.html.twig" %}
+
+{% block titleTab %}
+    Matchs - {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Matchs
+{% endblock %}
+
+{% block activeMatchs %}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    Matchs !
+{% endblock %}

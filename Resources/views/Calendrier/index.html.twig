@@ -1,0 +1,17 @@
+{% extends "ASHAppBundle::layout.html.twig" %}
+
+{% block titleTab %}
+   Calendrier - {{ parent() }}
+{% endblock %}
+
+{% block title %}
+   {{ parent() }} - Calendrier
+{% endblock %}
+
+{% block activeCalendrier %}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    Calendrier !
+{% endblock %}
